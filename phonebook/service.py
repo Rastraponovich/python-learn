@@ -13,8 +13,8 @@ def file_read(file_name='contacts.json') -> list:
 
 def file_write(new_file, file_name='contacts.json') -> bool:
     with open(file_name, 'w', encoding='utf-8') as file:
-        json.dump(new_file, file, sort_keys=True, indent=2)
-        return True
+    json.dump(new_file, file, sort_keys=True, indent=2)
+    return True
 
 
 def contact_save(contact) -> bool:
