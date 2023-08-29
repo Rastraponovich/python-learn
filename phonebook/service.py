@@ -1,15 +1,20 @@
-
 import json
 
 
-def file_read() -> list:
-    return json.load(open("contacts.json", encoding='utf-8'))
+def file_read(file_name='contacts.json') -> list:
+    try:
+        with open(file_name, encoding='utf-8') as file:
+            return json.load(file)
+    except OSError:
+        with open(file_name, 'w', encoding='utf-8') as file:
+            json.dump([], file, sort_keys=True, indent=2)
+            return []
 
 
-def file_write(new_file) -> bool:
-    with open('contacts.json', 'w', encoding='utf-8') as file:
-        json.dump(new_file, file, sort_keys=True, indent=2)
-        return True
+def file_write(new_file, file_name='contacts.json') -> bool:
+    with open(file_name, 'w', encoding='utf-8') as file:
+    json.dump(new_file, file, sort_keys=True, indent=2)
+    return True
 
 
 def contact_save(contact) -> bool:
